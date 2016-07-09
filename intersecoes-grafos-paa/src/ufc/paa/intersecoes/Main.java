@@ -24,13 +24,13 @@ public class Main {
 				grafo[w][v] = 1;
 		}
 		
-		int caminhos = 1;
+		int temCaminhoParaTodo = 1;
 		for (int i = 1; i <= n; i++) {
-			caminhos = MapeamentoIntersecoes.BFS(n, grafo, i);
-			if (caminhos == 0)
+			temCaminhoParaTodo = MapeamentoIntersecoes.BFS(n, grafo, i);
+			if (temCaminhoParaTodo == 0)
 				break;
 		}
-		System.out.println(caminhos);
+		System.out.println(temCaminhoParaTodo);
 		e.close();
 	}
 }

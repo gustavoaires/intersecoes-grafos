@@ -10,21 +10,21 @@ public class MapeamentoIntersecoes {
 	}
 
 	public static int BFS(int n, int grafo[][], int s) {
-		Queue<Integer> q = new LinkedList<>();
+		Queue<Integer> fila = new LinkedList<>();
 		Cor cor[] = new Cor[n + 1];
 		for (int i = 0; i <= n; i++)
 			cor[i] = Cor.BRANCO;
 		cor[s] = Cor.CINZA;
-		q.add(s);
+		fila.add(s);
 		int v;
 
-		while (!q.isEmpty()) {
-			v = q.remove();
+		while (!fila.isEmpty()) {
+			v = fila.remove();
 			for (int w = 1; w <= n; w++) {
 				if (grafo[v][w] == 1) {
 					if (cor[w].equals(Cor.BRANCO)) {
 						cor[w] = Cor.CINZA;
-						q.add(w);
+						fila.add(w);
 					}
 				}
 			}
