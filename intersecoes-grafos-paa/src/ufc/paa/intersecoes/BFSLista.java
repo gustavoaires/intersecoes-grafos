@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 /**
  * @author gustavo aires matos
- * @author eduardo lopes silva
+ * @author eduardo da silva lopes filho
  * Todos os comentarios de explicacao desta classe se aplicam para a classe BFSMatriz
  * A unica diferenca é que em BFSMatriz usa matriz no lugar da lista de adjacencia
  */
