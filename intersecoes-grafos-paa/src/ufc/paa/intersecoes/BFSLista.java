@@ -4,44 +4,32 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Scanner;
 
-public class Algoritmo {
+public class BFSLista {
 	
 public static void main(String[] args) {
-		
+		Scanner e = new Scanner(System.in);
+		int m = 0, n = 0, v = 0, w = 0, p = 0;
+		n = e.nextInt();
+		m = e.nextInt();
+	
 		List<List<Integer>> grafo = new ArrayList<>();
-		grafo.add(new ArrayList<>());
-		grafo.add(new ArrayList<>());
-		grafo.add(new ArrayList<>());
-		grafo.add(new ArrayList<>());
-		grafo.add(new ArrayList<>());
-		
-		grafo.get(1).add(2);
-		grafo.get(1).add(3);
-		grafo.get(1).add(4);
-		grafo.get(4).add(2);
-		grafo.get(3).add(1);
-		grafo.get(3).add(4);
-		grafo.get(4).add(1);
+		for (int i = 0; i <= n; i++)
+			grafo.add(new ArrayList<>());
+		for (int i = 1; i <= m; i++) {
+			v = e.nextInt();
+			w = e.nextInt();
+			p = e.nextInt();
+			// caso p seja 1, somente essa linha sera executada (tem uma aresta de v para w)
+			grafo.get(v).add(w);
+			// se a entrada de p for 2, havera aresta de ida e volta (o if contempla isso)
+			if (p == 2)
+				grafo.get(w).add(v);
+		}
 		
 		System.out.println(temCaminho(grafo));
-		
-		List<List<Integer>> grafo2 = new ArrayList<>();
-		grafo2.add(new ArrayList<>());
-		grafo2.add(new ArrayList<>());
-		grafo2.add(new ArrayList<>());
-		grafo2.add(new ArrayList<>());
-		grafo2.add(new ArrayList<>());
-		
-		grafo2.get(1).add(2);
-		grafo2.get(1).add(3);
-		grafo2.get(1).add(4);
-		grafo2.get(2).add(4);
-		grafo2.get(3).add(1);
-		grafo2.get(3).add(4);
-		grafo2.get(4).add(1);
-		
-		System.out.println(temCaminho(grafo2));
+		e.close();
 		
 	}
 
@@ -52,7 +40,6 @@ public static void main(String[] args) {
 				return 0;
 			}
 		}
-		
 		return 1;
 	}
 	
