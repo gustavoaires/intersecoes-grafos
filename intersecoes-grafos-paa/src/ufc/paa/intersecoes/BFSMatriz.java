@@ -4,6 +4,9 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
+/**
+ * @author gustavo aires matos
+ */
 public class BFSMatriz {
 
 	public static void main(String[] args) {
@@ -11,16 +14,15 @@ public class BFSMatriz {
 		int m = 0, n = 0, v = 0, w = 0, p = 0;
 		n = e.nextInt();
 		m = e.nextInt();
-		// os labels dos vertices comecam de 1
+		
 		int grafo[][] = new int[n + 1][n + 1];
 		
 		for (int i = 1; i <= m; i++) {
 			v = e.nextInt();
 			w = e.nextInt();
 			p = e.nextInt();
-			// caso p seja 1, somente essa linha sera executada (tem uma aresta de v para w)
+			
 			grafo[v][w] = 1;
-			// se a entrada de p for 2, havera aresta de ida e volta (o if contempla isso)
 			if (p == 2)
 				grafo[w][v] = 1;
 		}
@@ -33,10 +35,6 @@ public class BFSMatriz {
 		}
 		System.out.println(temCaminhoParaTodo);
 		e.close();
-	}
-	
-	public enum Cor {
-		BRANCO, CINZA, PRETO;
 	}
 
 	public static int bfs(int n, int grafo[][], int s) {
