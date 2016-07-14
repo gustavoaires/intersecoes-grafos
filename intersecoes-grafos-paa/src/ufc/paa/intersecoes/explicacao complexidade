@@ -1,0 +1,22 @@
+Complexidade por função:
+
+	bfs(List<List<Integer>> grafo, int s): 
+		No pior caso, a função terá uma complexida de O(3n+m) = O(n + m), pois para cada um dos 
+		n vértices serão percorridos todas as arestas que partes desse vértice. Assim, serão
+		percorridos todos os vértices e todas as arestas, o que dá uma complexidade de O(n + m).
+		Como há mais dois laços da ordem de n, temos que a complexidade da função e O(2n + n + m)
+		= O(3n + m) = O(n+m).
+		
+	temCaminho(List<List<Integer>> grafo):
+		No pior caso, a função terá uma complexidade de O(n(3n + m)) = O(3n^2 + n*m) = O(n^2 + n*m),
+		pois existe um laço que chama n vezes a função bfs que tem complexidade O(n + m), como vimos 
+		anteriormente, logo essa função tem complexidade O(n(3n + m)).
+		
+	main(String[] args):
+		No pior caso, a função terá uma complexidade de O(n^2 + n*m + n + m) = O(n^2 + n*m), pois há uma
+		parte da função complexidade de O(n), outra com O(m) e outra com O(n^2 + n*m) que é a chamada da 
+		função temCaminho(List<List<Integer>> grafo) que tem complexidade O(n^2 + n*m), como vimos 
+		anteriormente, logo O(n) e O(m)	são absorvidas por O(n^2 + n*m), então a complexidade da função é
+		de O(n^2 + n*m).
+		
+Observação: As partes não citadas aqui tem complexidades consideradas constantes.

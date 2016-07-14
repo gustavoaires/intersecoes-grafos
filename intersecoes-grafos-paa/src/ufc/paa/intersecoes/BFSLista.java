@@ -14,6 +14,7 @@ import java.util.Scanner;
  */
 public class BFSLista {
 
+	/*O(n^2 + n*m + n + m) = O(n^2 + n*m) */
 	public static void main(String[] args) {
 		Scanner e = new Scanner(System.in);
 		/**
@@ -30,14 +31,19 @@ public class BFSLista {
 	
 		// Inicializando o grafo
 		List<List<Integer>> grafo = new ArrayList<>();
-		for (int i = 0; i <= n; i++)
-			grafo.add(new ArrayList<>());
 		
+		/* O(n) */
+		for (int i = 0; i <= n; i++){
+			grafo.add(new ArrayList<>());
+		}
+			
 		/**
 		 * O grafo é repesentado de forma bidirecional
 		 * Sempre que p for 2, v é adicionado na lista de w e w é adicionado na lista de v
 		 * Caso p = 1, a aresta é adicionada de v para w
 		 */
+		
+		/* O(m) */
 		for (int i = 1; i <= m; i++) {
 			// primeiro vertice
 			v = e.nextInt();
@@ -52,6 +58,8 @@ public class BFSLista {
 				grafo.get(w).add(v);
 		}
 		// Imprime o resultado
+		
+		/*O(n^2 + n*m))*/
 		System.out.println(temCaminho(grafo));
 		e.close();
 	}
@@ -60,11 +68,15 @@ public class BFSLista {
 	 * @param grafo representa as relacoes (arestas) entre os vertices e os vertices
 	 * @return 1 se de algum vertice inicial tem caminho para todos os outros vertices, 0 cc
 	 */
+	
+	/*O(n(3n + m)) = O(3n^2 + n*m) = O(n^2 + n*m) */
 	public static int temCaminho(List<List<Integer>> grafo) {
 		// O loop repete até não existir caminho partindo de um vertice i
-		for (int i = 1; i < grafo.size(); i++)
-			if (bfs(grafo, i) == false)
+		for (int i = 1; i < grafo.size(); i++){
+			if (bfs(grafo, i) == false){
 				return 0;
+			}
+		}
 		return 1;
 	}
 	
@@ -73,6 +85,8 @@ public class BFSLista {
 	 * @param s representa o vertice inicial
 	 * @return false se algum vertice nao esta preto e true cc
 	 */
+	
+	/* O(3n+m) */
 	public static boolean bfs(List<List<Integer>> grafo, int s) {
 		/**
 		 * @variable fila guarda os proximos vertices a serem visitados
@@ -81,8 +95,11 @@ public class BFSLista {
 		Queue<Integer> fila = new LinkedList<>();
 		Cor[] cor = new Cor[grafo.size()];
 		// Inicializando o vetor de cores
-		for(int i = 1; i < grafo.size(); i++)
+		
+		/* O(n) */
+		for(int i = 1; i < grafo.size(); i++){
 			cor[i] = Cor.BRANCO;
+		}
 		cor[s] = Cor.CINZA;
 		fila.add(s);
 		/**
@@ -91,6 +108,8 @@ public class BFSLista {
 		 *  Para todos os adjacentes do vertice removido da fila, deve-se adiciona-los a fila caso nao visitados
 		 *  Depois de verificar todos os adjacentes marca-se o vertice removido da fila como visitado e com seus vizinhos checados (PRETO) 
 		 */
+		
+		/* O(n + m) */
 		while (!fila.isEmpty()) {
 			int u = fila.poll();
 			for (int w : grafo.get(u)) {
@@ -106,9 +125,13 @@ public class BFSLista {
 		 * Necessario verificar se todos os vertices estao pretos
 		 * @return true se todos preto, false se algum nao preto
 		 */
-		for (int i = 1; i < grafo.size(); i++)
-			if(cor[i] != Cor.PRETO)
+		
+		/* O(n) */
+		for (int i = 1; i < grafo.size(); i++){
+			if(cor[i] != Cor.PRETO){
 				return false;
+			}
+		}
 		return true;
 	}
 	
