@@ -51,10 +51,9 @@ public class BFSLista {
 			if (p == 2)
 				grafo.get(w).add(v);
 		}
-		
+		// Imprime o resultado
 		System.out.println(temCaminho(grafo));
 		e.close();
-		
 	}
 
 	/**
